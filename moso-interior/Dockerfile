@@ -10,7 +10,7 @@ RUN yum update -y && \
 RUN cd /var/www/html
 
 # download webfiles
-RUN wget https://github.com/IfeanyiSam/html-websites.git
+RUN wget https://www.tooplate.com/zip-templates/2133_moso_interior.zip
 
 # unzip folder
 RUN unzip 2133_moso_interior.zip
