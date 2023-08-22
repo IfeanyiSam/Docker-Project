@@ -1,0 +1,41 @@
+# create a repository on Docker Hub to store your docker images
+
+# Lauch an EC2 instance. Open port 22 and port 80
+
+# Install and configure docker on the ec2 instance
+sudo yum update -y
+sudo amazon-linux-extras install docker -y
+
+# start and enable docker service
+sudo service docker start
+sudo systemctl enable docker
+
+# Add ec2 user to docker group
+sudo usermod -a -G docker e
+
+# exit from the ec2 instance to apply changes
+exit
+ # ssh back into the instance and check for changes
+ docker info
+
+ # create docker file
+ sudo vim Dockerfile
+
+ # build the docker image
+ docker build -t moso .
+
+ # login to your docker hub account
+ docker login 
+
+ # provide credentials
+
+ #use the docker tag command to give the image a name
+ docker tag moso ifeanyisam/moso-interior
+
+# push image to docker hub repository
+docker push ifeanyisam/moso-interior
+
+# start the container to test the image
+docker run -dp 80:80 ifeanyisam/moso-interior
+
+# check for success by copying the ipv4 address of your ec2 instance and pasting into the url box of your browser
